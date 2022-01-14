@@ -1,0 +1,30 @@
+﻿<button class="btn btn-primary" data-toggle="modal" data-target="#Modal1">
+    Departman Ekle
+</button>
+<div class="modal" id="Modal1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Departman Ekle</h3>
+            </div>
+            <form method="post" action="/Department/Add/">
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-12 mb-3">
+                            <label class="label">Depatman Adı</label>
+                            <input name="Name" class="form-control" required />
+                        </div>
+                        <div class="col-12 mb-3">
+                            <label class="label">Depatman Açıklaması</label>
+                            <textarea name="Description" class="form-control" required></textarea>
+                        </div>
+                        <div class="col-12">
+                            <button class="btn btn-success w-100">KAYDET</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+

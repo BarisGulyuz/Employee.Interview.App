@@ -1,0 +1,60 @@
+﻿@using Employee.App.Data.Entities
+@model List<Employe>
+@{
+    ViewBag.Title = "";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="card mb-4 mt-4">
+    <div class="card-header">
+        <i class="fas fa-table mr-1"></i>
+        Personel İşlemleri
+    </div>
+    <div class="card-header">
+        <a href="/Employee/Add/" class="btn btn-primary">Personel Ekle</a>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="employes-table" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Ad</th>
+                        <th>Soyad</th>
+                        <th>Telefon</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.Id</td>
+                            <td>@item.Name</td>
+                            <td>@item.Surname</td>
+                            <td>@item.PhoneNumber</td>
+                            <td>
+                                <a class="btn btn-warning btn-sm" href="/Employee/Update/@item.Id"><span class="fas fa-edit"></span></a>
+                                <a class="btn btn-danger btn-sm" href="/Employee/Delete/@item.Id" onclick="return confirm(` '@item.Name @item.Surname' Adlı Personeli silmek istiyor musunuz?`)"><span class="fas fa-minus-circle"></span></a>
+                                <a class="btn btn-primary btn-sm" href="/Employee/AddPhotos/@item.Id"><span class="fas fa-image"></span></a>
+                            </td>
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</div>
+
+@section script {
+    <script type="text/javascript">
+        $('#employes-table').DataTable({
+            language: {
+                url: "https://cdn.datatables.net/plug-ins/1.10.20/i18n/Turkish.json"
+            }
+        })
+    </script>
+}
+
+

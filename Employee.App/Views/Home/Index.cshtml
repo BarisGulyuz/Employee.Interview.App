@@ -1,0 +1,29 @@
+﻿@using Employee.App.Data.Entities
+@model List<Employe>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_HomeLayout.cshtml";
+}
+<style>
+    #card {
+        margin-bottom: 400px;
+    }
+</style>
+<div id="card">
+    <div class="card-header text-center mt-3">
+        <h3> ÇALIŞANLARIMIZ</h3>
+    </div>
+    @foreach (var item in Model)
+    {
+        <div class="card mt-3 mb-3">
+            <div class="card-body">
+                <h2 class="card-title">@item.Name  @item.Surname</h2>
+                <p style="font-size:18px" class="card-text"><span class="badge badge-success">Telefon: @item.PhoneNumber</span></p>
+                <a href="/Home/Details/@item.Id" class="btn btn-primary">Bilgilerini Görüntüle &rarr;</a>
+            </div>
+        </div>
+
+    }
+</div>
+
+

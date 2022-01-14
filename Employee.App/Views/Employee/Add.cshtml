@@ -1,0 +1,115 @@
+﻿@model Employee.App.Data.Entities.Employe
+@{
+    ViewBag.Title = "Ekle";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link rel="stylesheet" href="//code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css">
+<div class="container-fluid mt-3">
+    <div class="card-header mb-2 mt-4">
+        <h5 class="text-center"><span class="fas fa-plus"></span> Persone Ekleme Sayfası</h5>
+    </div>
+    <form method="post" action="/Employee/Add/" enctype="multipart/form-data">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        Genel Bilgiler
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-6 mb-2">
+                                <label class="label">Departman</label>
+                                @Html.DropDownListFor(x => x.DeparmentId, (List<SelectListItem>)ViewBag.Departmants, new { @class = "form-control" })
+                            </div>
+                            <div class="col-6 mb-2">
+                                <label class="label">Rol</label>
+                                @Html.DropDownListFor(x => x.EmployeeTypeId, (List<SelectListItem>)ViewBag.Types, new { @class = "form-control" })
+                            </div>
+                            <div class="col-12">
+                                <label class="label">Yönetici</label>
+                                @Html.DropDownListFor(x => x.ManagerId, (List<SelectListItem>)ViewBag.Managers, new { @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 mt-3">
+                <div class="card">
+                    <div class="card-header">
+                        Kişisel Bilgiler
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-6 mb-2">
+                                <label class="label">Ad</label>
+                                <input name="Name" class="form-control" />
+                            </div>
+                            <div class="col-6 mb-2">
+                                <label class="label">Soyad</label>
+                                <input name="Surname" class="form-control" />
+                            </div>
+                            <div class="col-12 mb-2">
+                                <label class="label">Fotğraf</label>
+                                <input name="Url" class="form-control p-1" type="file" />
+                            </div>
+                            <div class="col-12 mb-2">
+                                <label class="label">Doğum Tarihi</label>
+                                <input name="Birthday" class="form-control p-1" id="birthday" />
+                            </div>
+                            <div class="col-12 mb-2">
+                                <label class="label">Telefon Numarası</label>
+                                <input name="PhoneNumber" type="number" maxlength="13" class="form-control" />
+                            </div>
+                            <div class="col-6 mb-2">
+                                <label class="label">Mail Adresi</label>
+                                <input name="Mail" type="email" class="form-control" />
+                            </div>
+                            <div class="col-6 mb-2">
+                                <label class="label">Şifre</label>
+                                <input type="password" name="password" class="form-control" />
+                            </div>
+                            <div class="col-12">
+                                <button type="submit" class="btn btn-primary w-100">Kaydet</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+@section script{
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
+    <script>
+        $(function () {
+            $("#birthday").datepicker({
+                closeText: "kapat",
+                prevText: "&#x3C;geri",
+                nextText: "ileri&#x3e",
+                currentText: "bugün",
+                monthNames: ["Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran",
+                    "Temmuz", "Ağustos", "Eylül", "Ekim", "Kasım", "Aralık"],
+                monthNamesShort: ["Oca", "Şub", "Mar", "Nis", "May", "Haz",
+                    "Tem", "Ağu", "Eyl", "Eki", "Kas", "Ara"],
+                dayNames: ["Pazar", "Pazartesi", "Salı", "Çarşamba", "Perşembe", "Cuma", "Cumartesi"],
+                dayNamesShort: ["Pz", "Pt", "Sa", "Ça", "Pe", "Cu", "Ct"],
+                dayNamesMin: ["Pz", "Pt", "Sa", "Ça", "Pe", "Cu", "Ct"],
+                weekHeader: "Hf",
+                dateFormat: "dd.mm.yy",
+                firstDay: 1,
+                isRTL: false,
+                showMonthAfterYear: false,
+                yearSuffix: "",
+                duration: 1000,
+                showAnim: "drop",
+                changeMonth: true,
+                changeYear: true,
+                showButtonPanel: true,
+                yearRange: "1920:2030"
+
+            });
+        });
+    </script>
+}

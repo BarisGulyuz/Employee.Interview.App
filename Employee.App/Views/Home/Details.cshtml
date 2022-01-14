@@ -1,0 +1,160 @@
+﻿@model Employee.App.Models.HomeViewModel
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_HomeLayout.cshtml";
+}
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
+<link href="~/Content/Site.css" rel="stylesheet" />
+<style>
+    p {
+        font-size: 18px;
+    }
+
+    ul li {
+        cursor: pointer;
+    }
+</style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+<div class="row">
+    <div class="col-9">
+        <div class="card-header mt-4">
+            <h5><span class="fas fa-user"></span> @Model.Employes.Name @Model.Employes.Surname Adlı Çalışanının Bilgileri</h5>
+        </div>
+
+        <div class="slider mt-5">
+            @foreach (var item in Model.Photos)
+            {
+                <img src="@item.Url" width="250" height="350" style="margin-bottom:0px" class="img-responsive" />
+
+            }
+        </div>
+        <div class="mb-5">
+            <div class="card">
+                <div class="card-header">
+                    <p><span class="fas fa-info"></span> Genel Bilgiler</p>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-6">
+                            <p><span class="fas fa-user"></span> Ad : <span class="badge badge-info">@Model.Employes.Name</span></p>
+                        </div>
+                        <div class="col-6">
+                            <p><span class="fas fa-user"></span> Soyad : <span class="badge badge-info">@Model.Employes.Surname</span></p>
+                        </div>
+                        <div class="col-6">
+                            <p><span class="fas fa-user"></span> Yaş: <span class="badge badge-success">@(DateTime.Now.Year- Model.Employes.Birthday.Year) Yaşında</span></p>
+                        </div>
+                        <div class="col-6">
+                            <p><span class="fas fa-user"></span> Deneyim Yılı: <span class="badge badge-success">4 Yıl</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card mt-2">
+                <div class="card-header">
+                    <span class="fas fa-phone"></span>  İletişim Bilgileri
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-6">
+                            <p><span class="fas fa-mail-bulk"></span> Mail: <span class="badge badge-warning"><a href="mailto:@Model.Employes.Mail">@Model.Employes.Mail</a></span></p>
+                        </div>
+                        <div class="col-6">
+                            <p> <span class="fas fa-phone"></span> Telefon:  <span class="badge badge-warning">@Model.Employes.PhoneNumber</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="be-comment-block">
+                <h1 class="comments-title">Yorumlar (3)</h1>
+                <div class="be-comment">
+                    <div class="be-img-comment">
+                        <a href="blog-detail-2.html">
+                            <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="" class="be-ava-comment">
+                        </a>
+                    </div>
+                    <div class="be-comment-content">
+
+                        <span class="be-comment-name">
+                            <a href="blog-detail-2.html">Emine Gülyüz</a>
+                        </span>
+                        <span class="be-comment-time">
+                            <i class="fa fa-clock-o"></i>
+                            14 Ocak 2021
+                        </span>
+
+                        <p class="be-comment-text">
+                            Harika bir insan...
+                        </p>
+                    </div>
+                </div>
+
+                <div class="be-comment">
+                    <div class="be-img-comment">
+                        <a href="blog-detail-2.html">
+                            <img src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="" class="be-ava-comment">
+                        </a>
+                    </div>
+                    <div class="be-comment-content">
+                        <span class="be-comment-name">
+                            <a href="blog-detail-2.html">Zeynep Gülyüz</a>
+                        </span>
+                        <span class="be-comment-time">
+                            <i class="fa fa-clock-o"></i>
+                            14 Ocak 2021
+                        </span>
+                        <p class="be-comment-text">
+                            Harika bir insan..
+                        </p>
+                    </div>
+                </div>
+                <div class="be-comment">
+                    <div class="be-img-comment">
+                        <a href="blog-detail-2.html">
+                            <img src="https://bootdey.com/img/Content/avatar/avatar3.png" alt="" class="be-ava-comment">
+                        </a>
+                    </div>
+                    <div class="be-comment-content">
+                        <span class="be-comment-name">
+                            <a href="blog-detail-2.html">Cüneyt ŞEN</a>
+                        </span>
+                        <span class="be-comment-time">
+                            <i class="fa fa-clock-o"></i>
+                            14 Ocak 2021
+                        </span>
+                        <p class="be-comment-text">
+                            Harika bir insan..
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-3 mt-5">
+        <ul class="list-group">
+            <li class="list-group-item active">Sosyal Medya Hesapları</li>
+            <li class="list-group-item"><span class="fab fa-facebook-f"></span> Facebook</li>
+            <li class="list-group-item"><span class="fab fa-instagram"></span> İnstagram</li>
+            <li class="list-group-item"><span class="fab fa-twitter"></span> Twitter</li>
+            <li class="list-group-item"><span class="fab fa-youtube"></span> Youtube</li>
+        </ul>
+    </div>
+</div>
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js" integrity="sha512-fzff82+8pzHnwA1mQ0dzz9/E0B+ZRizq08yZfya66INZBz86qKTCt9MLU0NCNIgaMJCgeyhujhasnFUsYMsi0Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('.slider').bxSlider();
+    });
+</script>
+
