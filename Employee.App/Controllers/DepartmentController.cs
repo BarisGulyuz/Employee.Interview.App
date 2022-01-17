@@ -53,6 +53,17 @@ namespace Employee.App.Controllers
             return RedirectToAction("Index");
         }
 
+        [HttpPost]
+        public JsonResult MultipleDelete(int[] id)
+        {
+            foreach (var item in id)
+            {
+                var department = departmentManager.Get(x => x.Id == item);
+                departmentManager.Delete(department);
+                TempData.Add("SuccessMessage","Departmanlar Başarıyla Silindi");
+            }
+            return Json("1");
+        }
 
 
     }
